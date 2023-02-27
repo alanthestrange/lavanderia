@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		
 		// inizializzo le lavatrici
 				Scanner s=new Scanner(System.in);
 				String scelta, lav;
@@ -14,30 +13,15 @@ public class Main {
 				lavatrice l1=new lavatrice(8);
 				lavatrice l2=new lavatrice(10);
 				lavatrice l3=new lavatrice(14);
-				
 				lavatrice lavatriceSelezionata=l1;
 				
 				do {
 					menu();
 					Console.setCursorPosition(1, 70);
 					System.out.print("Lavatrice selezionata: "+numLavatrice);
-					Console.setCursorPosition(2, 70);
-					System.out.print("  Capacità: "+lavatriceSelezionata.getCapacità());
-					Console.setCursorPosition(3, 70);
-					System.out.print("  Stato: "+lavatriceSelezionata.getStato());
-					Console.setCursorPosition(4, 70);
-					System.out.print("  Livello acqua: "+lavatriceSelezionata.getLivelloacqua());
-					Console.setCursorPosition(5, 70);
-					System.out.print("  Temperatura: "+lavatriceSelezionata.getTemperatura());
-					Console.setCursorPosition(6, 70);
-					System.out.print("  Velocità rotazione: "+lavatriceSelezionata.getVelocitàrotazione());
-					Console.setCursorPosition(7, 70);
-					System.out.print("  Detersivo: "+lavatriceSelezionata.detersivoAggiunto());
-					Console.setCursorPosition(8, 70);
-					System.out.print("  Costo: "+lavatriceSelezionata.getCosto());
-					Console.setCursorPosition(9, 70);
-					System.out.print("  Credito: "+lavatriceSelezionata.getCredito());
-					
+					mostralavatrice(l1, 1);	//chiamata al metodo: indico il valore effettivo (argomento)
+					mostralavatrice(l2, 11);	//chiamata al metodo: indico il valore effettivo (argomento)
+					mostralavatrice(l3, 21);	//chiamata al metodo: indico il valore effettivo (argomento)
 					Console.setCursorPosition(15, 1);
 					
 					System.out.print("Inserisci la tua scelta: ");
@@ -101,7 +85,7 @@ public class Main {
 						lavatriceSelezionata.stop();
 						break;
 						
-					case "9":
+					case "9": 	//stop 				
 						lavatriceSelezionata.svuota();
 						break;
 						
@@ -111,7 +95,7 @@ public class Main {
 					s.nextLine();
 					
 					
-				} while (!scelta.equals("9"));
+				} while (!scelta.equals("0"));
 				s.close();
 				
 
@@ -131,5 +115,27 @@ public class Main {
 				System.out.println("8) Stop");
 				System.out.println("9) Svuota");
 				System.out.println("0) Esci");
-	}
-}
+				
+			}
+			
+			//dichiarazione metodo: indico parametri generici
+			private static void mostralavatrice(lavatrice lav, int posizioneY) {	
+				Console.setCursorPosition(posizioneY+2, 70);
+				System.out.print("  capacità: "+lav.getCapacità());
+				Console.setCursorPosition(posizioneY+3, 70);
+				System.out.print("  stato: "+lav.getStato());
+				Console.setCursorPosition(posizioneY+4, 70);
+				System.out.print("  livello acqua: "+lav.getLivelloacqua());
+				Console.setCursorPosition(posizioneY+5, 70);
+				System.out.print("  temperatura: "+lav.getTemperatura());
+				Console.setCursorPosition(posizioneY+6, 70);
+				System.out.print("  velocità rotazione: "+lav.getVelocitàrotazione());
+				Console.setCursorPosition(posizioneY+7, 70);
+				System.out.print("  detersivo: "+lav.detersivoAggiunto());
+				Console.setCursorPosition(posizioneY+8, 70);
+				System.out.print("  costo: "+lav.getCosto());
+				Console.setCursorPosition(posizioneY+9, 70);
+				System.out.print("  credito: "+lav.getCredito());
+			}
+
+		}
